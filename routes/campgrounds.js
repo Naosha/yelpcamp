@@ -14,14 +14,15 @@ var options = {
 var geocoder = NodeGeocoder(options);
 
 
-//INDEX - Show all campgrounds
+//INDEX - show all campgrounds
 router.get("/", function(req, res){
+    // Get all campgrounds from DB
     Campground.find({}, function(err, allCampgrounds){
-        if(err){
-            console.log(err)
-        } else {
-            res.render("campgrounds/index",{campgrounds:allCampgrounds, currentUser: req.user});
-        }
+       if(err){
+           console.log(err);
+       } else {
+          res.render("campgrounds/index",{campgrounds: allCampgrounds, page: 'campgrounds'});
+       }
     });
 });
 
